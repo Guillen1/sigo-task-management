@@ -108,3 +108,17 @@ $ yarn run test:cov
 ### Access the application:
 
 Swagger API documentation is available at [http://localhost:8080/api](http://localhost:8080/api).
+
+
+### Out of Scope
+
+While the current implementation covers the core functionality of the task management system, the following items have been identified as not included in the initial scope of work but may be considered for future development:
+
+1. **Unique Titles for Tasks:**
+   - **Business Logic:** Enforcing unique titles across all tasks is currently not implemented. In future iterations, this could be added to prevent duplicate task titles, ensuring better organization and avoiding confusion.
+
+2. **Status Transition Rules:**
+   - **Business Logic:** Specific rules for transitioning between task statuses (e.g., from "Pending" to "Completed") have not been defined. Implementing status transition rules could enhance the system by preventing invalid status changes and maintaining consistent task states.
+
+3. **Pagination on `Get Many` Requests:**
+   - **Feature:** Pagination is not currently implemented for retrieving multiple tasks at once. Adding pagination could improve performance and usability, especially when dealing with a large number of tasks.
