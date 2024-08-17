@@ -107,6 +107,4 @@ $ yarn run test:cov
 
 ### Access the application:
 
-The application should be running on [http://localhost:8080](http://localhost:8080).
-
 Swagger API documentation is available at [http://localhost:8080/api](http://localhost:8080/api).

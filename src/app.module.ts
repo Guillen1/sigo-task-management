@@ -1,8 +1,11 @@
 import { RedisModule } from '@nestjs-modules/ioredis';
 import { Module } from '@nestjs/common';
+import { TerminusModule } from '@nestjs/terminus';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Task } from './tasks/domain/entities/task.entity';
 import { TasksModule } from './tasks/tasks.module';
+import { HealthModule } from './health/health.module';
+import { MainController } from './app.controller';
 
 @Module({
   imports: [
@@ -21,6 +24,8 @@ import { TasksModule } from './tasks/tasks.module';
       }
     }),
     TasksModule,
+    HealthModule,
   ],
+  controllers: [MainController]
 })
 export class AppModule {}
