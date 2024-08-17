@@ -1,4 +1,4 @@
-# Task Management System
+# Sigo Task Management System
 
 ## Overview
 
@@ -59,9 +59,9 @@ This project is a Task Management System built using NestJS. The system provides
    ```
 
 3. **Verify Redis is running:   
-  ```bash
-  redis-cli ping
-  ```
+   ```bash
+   redis-cli ping
+   ```
 
 ## Local Setup
 
