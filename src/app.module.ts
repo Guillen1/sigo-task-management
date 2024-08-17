@@ -1,0 +1,26 @@
+import { RedisModule } from '@nestjs-modules/ioredis';
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Task } from './tasks/domain/entities/task.entity';
+import { TasksModule } from './tasks/tasks.module';
+
+@Module({
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'sqlite',
+      database: 'database.sqlite',
+      synchronize: true,
+      logging: true,
+      entities: [Task],
+    }),
+    RedisModule.forRoot({
+      type: 'single',
+      options: {
+        host: 'localhost',
+        port: 6379
+      }
+    }),
+    TasksModule,
+  ],
+})
+export class AppModule {}
