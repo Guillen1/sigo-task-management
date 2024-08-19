@@ -9,7 +9,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { Task } from '../domain/models/task.model';
-import { CreateTaskDto } from '../dto/request/create-task.dto';
+import { CreateTaskDto } from './dto/request/create-task.dto';
 import {
   ApiCreatedResponse,
   ApiNoContentResponse,
@@ -18,10 +18,10 @@ import {
   ApiOperation,
   ApiTags,
 } from '@nestjs/swagger';
-import { TaskResponse } from '../dto/response/task.dto';
+import { TaskResponse } from './dto/response/task.dto';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { CreateTaskCommand } from '../cqrs/commands/create-task.command';
-import { UpdateTaskDto } from '../dto/request/update-task.dto';
+import { UpdateTaskDto } from './dto/request/update-task.dto';
 import { UpdateTaskCommand } from '../cqrs/commands/update-task.command';
 import { GetTaskByIdQuery } from '../cqrs/queries/get-task-by-id.query';
 import { GetTaskQuery } from '../cqrs/queries/get-task.query';

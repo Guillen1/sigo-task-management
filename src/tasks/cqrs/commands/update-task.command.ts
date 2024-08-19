@@ -1,4 +1,4 @@
-import { UpdateTaskDto } from '../../dto/request/update-task.dto';
+import { UpdateTaskDto } from '../../presentation/dto/request/update-task.dto';
 
 export class UpdateTaskCommand {
   constructor(

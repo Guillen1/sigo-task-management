@@ -1,4 +1,4 @@
-import { Task, TaskStatus } from '../../domain/models/task.model';
+import { Task, TaskStatus } from '../../../domain/models/task.model';
 import { TaskResponse } from './task.dto';
 
 describe('TaskResponse', () => {
