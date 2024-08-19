@@ -54,11 +54,12 @@ This project is a Task Management System built using NestJS. The system provides
    brew install redis
    ```
 2. **Install Redis**:
+
    ```bash
    brew services start redis
    ```
 
-3. **Verify Redis is running**:   
+3. **Verify Redis is running**:
    ```bash
    redis-cli ping
    ```
@@ -69,8 +70,9 @@ This project is a Task Management System built using NestJS. The system provides
 
 ```bash
 git clone https://github.com/Guillen1/sigo-task-management.git
-cd task-management  
+cd task-management
 ```
+
 ### Install dependencies:
 
 ```bash
@@ -85,7 +87,7 @@ $ yarn run start
 # watch mode
 $ yarn run start:dev
 
-# debug mode 
+# debug mode
 $ yarn start:debug
 
 # production mode
@@ -109,15 +111,16 @@ $ yarn run test:cov
 
 Swagger API documentation is available at [http://localhost:8080/api](http://localhost:8080/api).
 
-
 ## Out of Scope
 
 While the current implementation covers the core functionality of the task management system, the following items have been identified as not included in the initial scope of work but may be considered for future development:
 
 1. **Unique Titles for Tasks:**
+
    - **Business Logic:** Enforcing unique titles across all tasks is currently not implemented. In future iterations, this could be added to prevent duplicate task titles, ensuring better organization and avoiding confusion.
 
 2. **Status Transition Rules:**
+
    - **Business Logic:** Specific rules for transitioning between task statuses (e.g., from "Pending" to "Completed") have not been defined. Implementing status transition rules could enhance the system by preventing invalid status changes and maintaining consistent task states.
 
 3. **Pagination on `Get Many` Requests:**

@@ -107,7 +107,9 @@ export class TasksController {
   @ApiNotFoundResponse({
     description: 'Task not found.',
   })
- async deleteTask(@Param('id', new ParseUUIDPipe()) id: string): Promise<void> {
+  async deleteTask(
+    @Param('id', new ParseUUIDPipe()) id: string,
+  ): Promise<void> {
     await this.commandBus.execute(new DeleteTaskCommand(id));
   }
 }

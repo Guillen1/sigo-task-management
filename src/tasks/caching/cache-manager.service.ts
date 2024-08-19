@@ -27,11 +27,9 @@ export class CacheManagerService {
 
   async cacheTasks(tasks: Task[]): Promise<void> {
     await this.redis.set('tasks:all', JSON.stringify(tasks), 'EX', 3600); // Cache for 1 hour
-
   }
-  
+
   async invalidateAllTasksCache(): Promise<void> {
     await this.redis.del('tasks:all');
   }
-  
 }

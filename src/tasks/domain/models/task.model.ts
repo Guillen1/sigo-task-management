@@ -1,4 +1,4 @@
-import {Task as TaskEntity} from '../entities/task.entity';
+import { Task as TaskEntity } from '../entities/task.entity';
 
 export enum TaskStatus {
   PENDING = 'pending',

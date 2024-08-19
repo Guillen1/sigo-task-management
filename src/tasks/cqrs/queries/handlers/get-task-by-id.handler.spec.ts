@@ -5,7 +5,10 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { Task } from 'src/tasks/domain/entities/task.entity';
 import { CacheManagerService } from 'src/tasks/caching/cache-manager.service';
 import { NotFoundException } from '@nestjs/common';
-import { Task as TaskModel, TaskStatus } from 'src/tasks/domain/models/task.model';
+import {
+  Task as TaskModel,
+  TaskStatus,
+} from 'src/tasks/domain/models/task.model';
 import { GetTaskByIdQuery } from '../get-task-by-id.query';
 
 describe('GetTaskByIdHandler', () => {
@@ -74,7 +77,9 @@ describe('GetTaskByIdHandler', () => {
 
     expect(cacheManagerService.getTaskFromCache).toHaveBeenCalledWith('1');
     expect(taskRepository.findOneBy).toHaveBeenCalledWith({ id: '1' });
-    expect(cacheManagerService.cacheTask).toHaveBeenCalledWith(TaskModel.fromEntity(taskEntity));
+    expect(cacheManagerService.cacheTask).toHaveBeenCalledWith(
+      TaskModel.fromEntity(taskEntity),
+    );
     expect(result).toEqual(TaskModel.fromEntity(taskEntity));
   });
 
@@ -82,7 +87,9 @@ describe('GetTaskByIdHandler', () => {
     jest.spyOn(cacheManagerService, 'getTaskFromCache').mockResolvedValue(null);
     jest.spyOn(taskRepository, 'findOneBy').mockResolvedValue(null);
 
-    await expect(handler.execute(new GetTaskByIdQuery('1'))).rejects.toThrow(NotFoundException);
+    await expect(handler.execute(new GetTaskByIdQuery('1'))).rejects.toThrow(
+      NotFoundException,
+    );
 
     expect(cacheManagerService.getTaskFromCache).toHaveBeenCalledWith('1');
     expect(taskRepository.findOneBy).toHaveBeenCalledWith({ id: '1' });

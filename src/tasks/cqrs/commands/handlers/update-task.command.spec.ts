@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { UpdateTaskHandler } from './update-task.handler';
 import { Repository } from 'typeorm';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { Task as TaskEntity} from 'src/tasks/domain/entities/task.entity';
+import { Task as TaskEntity } from 'src/tasks/domain/entities/task.entity';
 import { CacheManagerService } from 'src/tasks/caching/cache-manager.service';
 import { NotFoundException } from '@nestjs/common';
 import { UpdateTaskCommand } from '../update-task.command';
@@ -32,7 +32,9 @@ describe('UpdateTaskHandler', () => {
     }).compile();
 
     handler = module.get<UpdateTaskHandler>(UpdateTaskHandler);
-    taskRepository = module.get<Repository<TaskEntity>>(getRepositoryToken(TaskEntity));
+    taskRepository = module.get<Repository<TaskEntity>>(
+      getRepositoryToken(TaskEntity),
+    );
     cacheManagerService = module.get<CacheManagerService>(CacheManagerService);
 
     jest.spyOn(taskRepository, 'findOneBy').mockResolvedValue(null);

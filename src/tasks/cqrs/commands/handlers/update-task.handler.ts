@@ -2,7 +2,7 @@ import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { UpdateTaskCommand } from '../update-task.command';
-import { Task as TaskEntity} from 'src/tasks/domain/entities/task.entity';
+import { Task as TaskEntity } from 'src/tasks/domain/entities/task.entity';
 import { NotFoundException } from '@nestjs/common';
 import { CacheManagerService } from 'src/tasks/caching/cache-manager.service';
 import { Task } from 'src/tasks/domain/models/task.model';

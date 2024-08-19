@@ -11,7 +11,6 @@ describe('CreateTaskHandler', () => {
   let handler: CreateTaskHandler;
   let taskRepository: Repository<TaskEntity>;
   let cacheManagerService: CacheManagerService;
-  
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -31,12 +30,17 @@ describe('CreateTaskHandler', () => {
     }).compile();
 
     handler = module.get<CreateTaskHandler>(CreateTaskHandler);
-    taskRepository = module.get<Repository<TaskEntity>>(getRepositoryToken(TaskEntity));
+    taskRepository = module.get<Repository<TaskEntity>>(
+      getRepositoryToken(TaskEntity),
+    );
     cacheManagerService = module.get<CacheManagerService>(CacheManagerService);
   });
 
   it('should create a new task and invalidate the cache', async () => {
-    const command = new CreateTaskCommand({ title: 'Test Task', description: 'Test Description' });
+    const command = new CreateTaskCommand({
+      title: 'Test Task',
+      description: 'Test Description',
+    });
     const savedTaskEntity = {
       id: '1',
       title: command.task.title,
@@ -46,7 +50,9 @@ describe('CreateTaskHandler', () => {
       updatedAt: new Date(),
     };
 
-    jest.spyOn(taskRepository, 'save').mockResolvedValue( savedTaskEntity as TaskEntity);
+    jest
+      .spyOn(taskRepository, 'save')
+      .mockResolvedValue(savedTaskEntity as TaskEntity);
     jest.spyOn(Task, 'fromEntity').mockReturnValue({
       ...savedTaskEntity,
     });

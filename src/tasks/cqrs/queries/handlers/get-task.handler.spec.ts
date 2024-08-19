@@ -4,7 +4,10 @@ import { Repository } from 'typeorm';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Task } from 'src/tasks/domain/entities/task.entity';
 import { CacheManagerService } from 'src/tasks/caching/cache-manager.service';
-import { Task as TaskModel, TaskStatus } from 'src/tasks/domain/models/task.model';
+import {
+  Task as TaskModel,
+  TaskStatus,
+} from 'src/tasks/domain/models/task.model';
 
 describe('GetTaskHandler', () => {
   let handler: GetTaskHandler;
@@ -32,16 +35,13 @@ describe('GetTaskHandler', () => {
     handler = module.get<GetTaskHandler>(GetTaskHandler);
     taskRepository = module.get<Repository<Task>>(getRepositoryToken(Task));
     cacheManagerService = module.get<CacheManagerService>(CacheManagerService);
-    
+
     // Mock the find method
     jest.spyOn(taskRepository, 'find').mockResolvedValue([]);
   });
 
   it('should return tasks from cache if found', async () => {
-    const tasks = [
-      new TaskModel(),
-      new TaskModel(),
-    ];
+    const tasks = [new TaskModel(), new TaskModel()];
     tasks[0].id = '1';
     tasks[0].title = 'Test Task 1';
     tasks[0].description = 'Test Description 1';
@@ -90,7 +90,9 @@ describe('GetTaskHandler', () => {
 
     expect(cacheManagerService.getAllTaskCache).toHaveBeenCalled();
     expect(taskRepository.find).toHaveBeenCalled(); // Ensure the database is queried
-    expect(cacheManagerService.cacheTasks).toHaveBeenCalledWith(taskEntities.map(TaskModel.fromEntity)); // Ensure tasks are cached
+    expect(cacheManagerService.cacheTasks).toHaveBeenCalledWith(
+      taskEntities.map(TaskModel.fromEntity),
+    ); // Ensure tasks are cached
     expect(result).toEqual(taskEntities.map(TaskModel.fromEntity)); // Ensure the correct result is returned
   });
 });

@@ -1,6 +1,5 @@
 import { RedisModule } from '@nestjs-modules/ioredis';
 import { Module } from '@nestjs/common';
-import { TerminusModule } from '@nestjs/terminus';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Task } from './tasks/domain/entities/task.entity';
 import { TasksModule } from './tasks/tasks.module';
@@ -20,12 +19,12 @@ import { MainController } from './app.controller';
       type: 'single',
       options: {
         host: 'localhost',
-        port: 6379
-      }
+        port: 6379,
+      },
     }),
     TasksModule,
     HealthModule,
   ],
-  controllers: [MainController]
+  controllers: [MainController],
 })
 export class AppModule {}

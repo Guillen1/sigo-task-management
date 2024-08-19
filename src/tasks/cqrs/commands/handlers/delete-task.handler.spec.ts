@@ -40,7 +40,11 @@ describe('DeleteTaskHandler', () => {
 
   it('should delete the task and invalidate the cache', async () => {
     const command = new DeleteTaskCommand('1');
-    const task = { id: '1', title: 'Test Task', description: 'Test Description' } as Task;
+    const task = {
+      id: '1',
+      title: 'Test Task',
+      description: 'Test Description',
+    } as Task;
 
     jest.spyOn(taskRepository, 'findOneBy').mockResolvedValue(task);
     jest.spyOn(taskRepository, 'delete').mockResolvedValue(undefined);
@@ -60,8 +64,8 @@ describe('DeleteTaskHandler', () => {
 
     await expect(handler.execute(command)).rejects.toThrow(NotFoundException);
     expect(taskRepository.findOneBy).toHaveBeenCalledWith({ id: '1' });
-    expect(taskRepository.delete).not.toHaveBeenCalled();  // Ensure this is not called
-    expect(cacheManagerService.deleteTaskFromCache).not.toHaveBeenCalled();  // Ensure this is not called
-    expect(cacheManagerService.invalidateAllTasksCache).not.toHaveBeenCalled();  // Ensure this is not called
+    expect(taskRepository.delete).not.toHaveBeenCalled(); // Ensure this is not called
+    expect(cacheManagerService.deleteTaskFromCache).not.toHaveBeenCalled(); // Ensure this is not called
+    expect(cacheManagerService.invalidateAllTasksCache).not.toHaveBeenCalled(); // Ensure this is not called
   });
 });

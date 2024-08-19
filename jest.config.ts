@@ -7,10 +7,8 @@ const config: Config.InitialOptions = {
   transform: {
     '^.+\\.(t|j)s$': 'ts-jest',
   },
-  collectCoverageFrom: [
-    "src/**/*.ts"
-  ],
-  coverageDirectory: "../coverage",
+  collectCoverageFrom: ['src/**/*.ts'],
+  coverageDirectory: '../coverage',
   testEnvironment: 'node',
 };
 
