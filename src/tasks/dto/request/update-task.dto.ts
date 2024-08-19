@@ -19,7 +19,8 @@ export class UpdateTaskDto {
     })
     @IsOptional()
     @IsEnum(TaskStatus, {
-      message: 'status must be a valid TaskStatus value',
+      message: `status must be one of the following values: ${Object.values(TaskStatus).join(', ')}`,
+
     })
     status?: TaskStatus;
   }
