@@ -110,7 +110,7 @@ $ yarn run test:cov
 Swagger API documentation is available at [http://localhost:8080/api](http://localhost:8080/api).
 
 
-### Out of Scope
+## Out of Scope
 
 While the current implementation covers the core functionality of the task management system, the following items have been identified as not included in the initial scope of work but may be considered for future development:
 
