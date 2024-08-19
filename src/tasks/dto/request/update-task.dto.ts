@@ -21,5 +21,5 @@ export class UpdateTaskDto {
     @IsEnum(TaskStatus, {
       message: 'status must be a valid TaskStatus value',
     })
-    status: TaskStatus;
+    status?: TaskStatus;
   }
