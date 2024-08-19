@@ -58,7 +58,7 @@ This project is a Task Management System built using NestJS. The system provides
    brew services start redis
    ```
 
-3. **Verify Redis is running:   
+3. **Verify Redis is running**:   
    ```bash
    redis-cli ping
    ```
