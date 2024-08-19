@@ -68,7 +68,7 @@ This project is a Task Management System built using NestJS. The system provides
 ### Clone the repository:
 
 ```bash
-git clone https://github.com/your-repository/task-management.git
+git clone https://github.com/Guillen1/sigo-task-management.git
 cd task-management  
 ```
 ### Install dependencies:
